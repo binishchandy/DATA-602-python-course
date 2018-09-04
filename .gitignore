@@ -6,3 +6,12 @@
 06_assignment_solution.py
 07_assignment_solution.py
 08_assignment_solution.py
+.DS_Store
+
+### IntelliJ Pycharm ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+*.pyc
