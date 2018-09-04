@@ -168,7 +168,6 @@ def exercise13():
     pi = 3.14159
     # ------ Place code below here \/ \/ \/ ------
     r = 7
-    pi = round(math.pi, 5)
     volume_sphere = 4 * pi * pow(r, 3) / 3
     # ------ Place code above here /\ /\ /\ ------
     return pi, r, volume_sphere
