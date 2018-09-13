@@ -14,6 +14,7 @@ Assignment #2
 
 '''
 import math
+import numpy
 import unittest
 import numpy as np
 import requests as r
@@ -22,7 +23,7 @@ def exercise01():
     # Create a list called animals containing the following animals: cat, dog, crouching tiger, hidden dragon, manta ray
 
     # ------ Place code below here \/ \/ \/ ------
-
+    animals = ["cat", "dog", "crouching tiger", "hidden dragon", "manta ray"]
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -33,8 +34,10 @@ def exercise02():
     # Repeat exercise 1 and loop through and print each item in the animal list by iterating through an index number and using range(). Set the variable len_animals to the length of the animal list.
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    animals = ["cat", "dog", "crouching tiger", "hidden dragon", "manta ray"]
+    for i in range(len(animals)):
+        print(animals[i])
+    len_animals = len(animals)
     # ------ Place code above here /\ /\ /\ ------
 
     return animals, len_animals
@@ -46,8 +49,9 @@ def exercise03():
     the_fifth_element = -999
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    countdown = sorted(countdown, reverse=True)
+    print(countdown)
+    the_fifth_element = countdown[4]
     # ------ Place code above here /\ /\ /\ ------
 
     return countdown, the_fifth_element
@@ -69,9 +73,15 @@ def exercise04(more_temperatures, iot_sensor_points, a, b, c, d, e):
     copy_of_samples = []
 
     # ------ Place code below here \/ \/ \/ ------
-
-
-
+    temperatures.extend(more_temperatures)
+    temperatures.extend(list(iot_sensor_points.values()))
+    temperatures.extend([a, b, c, d, e])
+    temperatures.sort(reverse=True)
+    for i in range(len(temperatures)):
+        if (i + 1) % 5 == 0:
+            samples.append(temperatures[i])
+    copy_of_samples = samples.copy()
+    samples.sort()
     # ------ Place code above here /\ /\ /\ ------
 
     return samples, temperatures, more_temperatures, iot_sensor_points, a, b, c, d, e, copy_of_samples
@@ -82,17 +92,22 @@ def exercise05(n):
 
     # ------ Place code below here \/ \/ \/ ------
 
-    pass
-
+    if n < 1:
+        return 1
+    else:
+        return n * exercise05(n - 1)
     # ------ Place code above here /\ /\ /\ ------
 
 
 def exercise06(n):
-     # This function will receive an arbitrary list of numbers of arbitrary size and find the average of those numbers. The size of the list may vary. Find the method that requires the  least amount of code. Return back the length, sum of list and average of list
+    # This function will receive an arbitrary list of numbers of arbitrary size and find the average of those numbers. The size of the list may vary. Find the method that requires the  least amount of code. Return back the length, sum of list and average of list
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    if n is None or len(n) == 0:
+        raise ValueError("Empty list")
+    length_n = len(n)
+    average_n = numpy.mean(n)
+    sum_n = numpy.sum(n)
     # ------ Place code above here /\ /\ /\ ------
     return length_n, sum_n, average_n
 
@@ -101,7 +116,7 @@ def exercise07(n):
     # This function looks for duplicates in list n. If there is a duplicate False is returned. If there are no duplicates True is returned.
 
     # ------ Place code below here \/ \/ \/ ------
-
+    return len(n) == len(set(n))
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -117,8 +132,58 @@ def exercise07(n):
 # 8. The menu options should repeatedly be displayed after each selection (and appropriate delegate function is called) until user selects exist
 
 # ------ Place code below here \/ \/ \/ ------
+def display_menu(menu):
+    if type(menu) is not tuple:
+        return -1, len(menu)
+    for i in range(len(menu)):
+        print(str(i) + " : " + menu[i])
+    print(str(len(menu)) + " : Exit")
+    print("Select from menu")
+    user_selection = input()
+    try:
+        user_selection = int(user_selection)
+    except:
+        print("Invalid selection... Do you want to retry [y/n]?")
+        user_selection = input()
+        if user_selection == "Y" or user_selection == "y" or user_selection == "Yes" or user_selection == "yes":
+            display_menu(menu)
+        else:
+            print("Exiting application")
+            return len(menu), len(menu)
+    if user_selection < 0 or user_selection > len(menu):
+        print("Invalid selection... Do you want to retry [y/n]?")
+        user_selection_old = user_selection
+        user_selection = input()
+        if user_selection == "Y" or user_selection == "y" or user_selection == "Yes" or user_selection == "yes":
+            display_menu(menu)
+        else:
+            print("Exiting application")
+            return user_selection_old, len(menu)
+    elif user_selection == len(menu):
+        print("Exiting application")
+        return user_selection, len(menu)
+    else:
+        if user_selection == 0:
+            buy_bitcoin()
+        elif user_selection == 1:
+            buy_ethereum()
+        elif user_selection == 2:
+            sell_bitcoin()
+        else:
+            sell_ethereum()
+        return display_menu(menu)
 
+def buy_bitcoin():
+    print("Bitcoin bought")
 
+def buy_ethereum():
+    print("Ethereum bought")
+
+def sell_bitcoin():
+    print("Bitcoin sold")
+
+def sell_ethereum():
+    print("Ethereum sold")
 
 # ------ Place code above here /\ /\ /\ ------
 
@@ -131,7 +196,8 @@ def exercise09():
     print(str(dog_media.content))
     
     # ------ Place code below here \/ \/ \/ ------
-    
+    for i in range(10):
+        dogs.append(str(r.get(url=url).content))
 
 
     # ------ Place code above here /\ /\ /\ ------
@@ -144,8 +210,15 @@ def exercise10(sentence):
     reversed = ''
 
     # ------ Place code below here \/ \/ \/ ------
-    
-
+    for i in sentence:
+        if i == ' ':
+            reversed = "_" + reversed
+        elif i.islower():
+            reversed = i.upper() + reversed
+        elif i.isupper():
+            reversed = i.lower() + reversed
+        else:
+            reversed = i + reversed
 
     # ------ Place code above here /\ /\ /\ ------
     return reversed
