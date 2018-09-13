@@ -150,15 +150,14 @@ def display_menu(menu):
         else:
             print("Exiting application")
             return len(menu), len(menu)
-    if user_selection < 0 or user_selection > len(menu):
+    if isinstance(user_selection, int) and (user_selection < 0 or user_selection > len(menu)):
         print("Invalid selection... Do you want to retry [y/n]?")
-        user_selection_old = user_selection
         user_selection = input()
         if user_selection == "Y" or user_selection == "y" or user_selection == "Yes" or user_selection == "yes":
             display_menu(menu)
         else:
             print("Exiting application")
-            return user_selection_old, len(menu)
+            return len(menu), len(menu)
     elif user_selection == len(menu):
         print("Exiting application")
         return user_selection, len(menu)
