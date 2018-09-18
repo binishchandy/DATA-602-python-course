@@ -109,7 +109,7 @@ def exercise07(n):
 # Create a function called display_menu that receives an argument called menu. The function should do the following:
 # 1. Verify that menu is in fact a tuple. If it isnt, return back -1.
 # 2. Determine the number of elements in menu
-# 3. Loops through menu & enumerate through to the a menu to the screen i.e. 1. Buy Burger, 2. Buy Milkshake etc. The enumeration should be generate by code and not hardcoded.
+# 3. Loops through menu & enumerate through to the a menu to the screen. The test case will describe what the menu items are. The enumeration should be generate by code and not hardcoded.
 # 4. Using input(), asks the user to select a menu item by entering a number and hitting Enter 
 # 5. Validates if the number entered is a valid menu option and asks user to retry if number is not valid or is not a number / int
 # 6. An exit menu option should be added at the end of the displayed list of menu options allowing the user to exit selecting a menu causing the display_menu() function to return back the number of the last menu option chosen prior to exit and also return the length of menu
