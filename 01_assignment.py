@@ -34,7 +34,7 @@ def exercise01():
 
 
 def exercise02():
-    # Create a variable called name and set it to your first name.
+    # Create a string variable called name and set it to your first name.
 
     # ------ Place code below here \/ \/ \/ ------
 
@@ -44,7 +44,7 @@ def exercise02():
 
 
 def exercise03():
-    # Create a variable called sentence and assign it to an arbitrary sentence that contains at least 3 words
+    # Create a string variable called sentence and assign it to an arbitrary sentence that contains at least 3 words
 
     # ------ Place code below here \/ \/ \/ ------
 
@@ -54,7 +54,7 @@ def exercise03():
 
 
 def exercise04():
-    # Create two variables. The first variable is called first_name, the second is last_name. Set both variables to your first name and last name respectively.
+    # Create two string variables. The first variable is called first_name, the second is last_name. Set both variables to your first name and last name respectively.
 
     # ------ Place code below here \/ \/ \/ ------
 
@@ -112,7 +112,7 @@ def exercise09():
 
 
 def exercise10():
-    # Create 5 variables named factorN where N is the numbers 1 to 5 and set them 1 through 5 respectively. Create a variable called product that holds the product of the 5 variables
+    # Create 5 variables named factorN where N is the numbers 1 to 5 and set them to 1 through 5, respectively. Create a variable called product that holds the product of the 5 variables
 
     # ------ Place code below here \/ \/ \/ ------
 
@@ -122,7 +122,7 @@ def exercise10():
 
 
 def exercise11():
-    # Create a variable pi and set it to pi 10 decimal places out
+    # Create a variable pi and literally set it to pi 10 decimal places out
 
     # ------ Place code below here \/ \/ \/ ------
 
