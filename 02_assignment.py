@@ -124,6 +124,7 @@ def exercise09():
     url = 'https://random.dog/woof.json'
     dog_media = r.get(url=url)
     print(str(dog_media.content))
+    
     # ------ Place code below here \/ \/ \/ ------
     
 
