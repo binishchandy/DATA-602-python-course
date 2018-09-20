@@ -43,9 +43,9 @@ def exercise01():
         - A method called double() that doubles the size of the box. Hint: Pay attention to return value here
         - Implement __eq__ so that two boxes can be compared using == 
         - A method print_dim that prints to screen the length and width details of the box
-        - A method get_dim that returns a tuple containgthe length and width of the box
-        - A method combine that takes another box as an argument and increases its length and width by the dimensions of the other box
-        - A method get_hypot() that finds the length of the diagonal that cuts throught he middle
+        - A method get_dim that returns a tuple containing the length and width of the box
+        - A method combine() that takes another box as an argument and increases its length and width by the dimensions of the other box
+        - A method get_hypot() that finds the length of the diagonal that cuts throught the middle
 
         In the function exercise01():
         - Instantiate 3 boxes of dimensions 5,10 , 3,4 and 5,10 and assign to variables box1, box2 and box3 respectively 
@@ -120,7 +120,7 @@ def exercise02():
         - Display a list of collections
         - Display the db's UUID
         - Wipe the database clean
-        - Display the db's UUID again
+        - Display the db's UUID again, confirming it has changed
     '''
 
     test_scores = [99,89,88,75,66,92,75,94,88,87,88,68,52]
