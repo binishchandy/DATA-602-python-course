@@ -44,7 +44,7 @@ def exercise01():
         - Implement __eq__ so that two boxes can be compared using == 
         - A method print_dim that prints to screen the length and width details of the box
         - A method get_dim that returns a tuple containing the length and width of the box
-        - A method combine() that takes another box as an argument and increases its length and width by the dimensions of the other box
+        - A method combine() that takes another box as an argument and increases the length and width by the dimensions of the box passed in
         - A method get_hypot() that finds the length of the diagonal that cuts throught the middle
 
         In the function exercise01():
