@@ -41,7 +41,7 @@ def exercise01():
         - A method called invert() that switches length and width with each other
         - Methods get_area() and get_perimeter() that return appropriate geometric calculations
         - A method called double() that doubles the size of the box. Hint: Pay attention to return value here
-        - Implement __eq__ so that two boxes can be compared using == 
+        - Implement __eq__ so that two boxes can be compared using ==. Two boxes are equal if their respective lengths and widths are identical.
         - A method print_dim that prints to screen the length and width details of the box
         - A method get_dim that returns a tuple containing the length and width of the box
         - A method combine() that takes another box as an argument and increases the length and width by the dimensions of the box passed in
