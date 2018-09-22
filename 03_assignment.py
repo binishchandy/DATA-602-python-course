@@ -36,6 +36,8 @@ def exercise01():
     '''
         Create an immutable class Box that has private attributes length and width that takes values for length and width upon construction (instantiation via the constructor). Make sure to use Python 3 semantics. Make sure the length and width attributes are private and accessible only via getters.
         
+        Remember, here immutable means there are no setter methods. States can change with the methods required below i.e. combine(), invert().
+        
         In addition, create...
         - A method called render() that prints out to the screen a box made with asterisks of length and width dimensions
         - A method called invert() that switches length and width with each other
