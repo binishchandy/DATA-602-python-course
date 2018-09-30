@@ -82,7 +82,7 @@ def exercise05(n):
 
     # ------ Place code below here \/ \/ \/ ------
 
-
+    pass
 
     # ------ Place code above here /\ /\ /\ ------
 
