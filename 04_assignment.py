@@ -47,9 +47,9 @@ class PandasChain:
         self.__name = # Convert name to upper case and store it here
         self.__chain = # Create a blank list
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
-        self.__seq_id = # Set to zero
+        # Create a sequence ID and set to zero
         self.__prev_hash = # Set to None
-        self.__current_block = # Create a new Block passing in seq id and previous hash 
+        self.__current_block = # Create a new Block 
         print(self.__name,'PandasChain created with ID',self.__id,'chain started.')
     def display_chain(self): # This method should loop through all committed and uncommitted blocks and display all transactions in them
 
