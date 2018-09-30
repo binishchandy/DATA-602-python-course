@@ -75,7 +75,7 @@ class Block:
         self.__prev_hash = # From constructor
         self.__col_names = ['Timestamp','Sender','Receiver','Value','TxHash']
         self.__transactions = # Create a new blank DataFrame with set headers
-        self.__status = "UNCOMMITTED"
+        self.__status = # Initial status
         self.__block_hash = None
         self.__merkle_tx_hash = None
     def display_header(self): #5 pts -  Display on a single line the metadata of this block. You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and number of transactions in the block
@@ -94,7 +94,6 @@ class Block:
         # 5 pts - Setter for block hash
     def get_simple_merkle_root(self): # 10 pts - Return and calculate merkle hash by taking all transaction hashes, concatenate them into one string and hash that string producing a "merkle root" - Note, this is not how merkle tries work but is instructive and indicative in terms of the intent and purpose of merkle tries
         
-        return self.__merkle_tx_hash
 
 class TestAssignment4(unittest.TestCase):
     def test_chain(self):
