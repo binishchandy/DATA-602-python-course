@@ -33,11 +33,10 @@ To understand blocks, chains and how are hashes are used, watch this video: http
 
 One way to tackle this assigment is to start with these classes blank and slowly build it out in a separate file so that as you build it out it continues to run without errors, allowing you to incrementally build and test.
 
-T
-
 Exercise #1. Complete the code below to produce a working PandasChain. Hints are provided wherever feasible.
 
-Exercise #2. Using get_values(), get all of the values in the chain and plot them. Use an incrementing sequential number for x and the transaction values for y 
+Exercise #2. Using PandasChain's get_values(), get all of the values in the chain and plot them. Use an incrementing sequential number for x and the transaction values for y 
+
 '''
 
 
