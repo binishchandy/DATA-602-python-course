@@ -35,8 +35,9 @@ One way to tackle this assigment is to start with these classes blank and slowly
 
 Exercise #1. Complete the code below to produce a working PandasChain. Hints are provided wherever feasible.
 
-Exercise #2. Using PandasChain's get_values(), get all of the values in the chain and plot them. Use an incrementing sequential number for x and the transaction values for y 
+Exercise #2. Using PandasChain's get_values(), get all of the transaction values across all blocks in the chain and plot them. Use an incrementing sequential number for x and the transaction values for y 
 
+Extra Credit (+10 points): Have get_values() return the timestamp for each value transacted and plot a timeseries as well
 '''
 
 
