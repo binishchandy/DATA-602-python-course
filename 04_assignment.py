@@ -61,12 +61,12 @@ class PandasChain:
         self.__current_block.add_transaction(s,r,v)
     def __commit_block(self,block): # 10 pts - This method is called by add_transaction if a block is full (i.e 10 or more transactions). It is private and therefore not public accessible. It will change the block status to committed, obtain the merkle root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block to the chain list, increment the seq_id and create a new block as the current block
             # Add code here
-            block_hash = hashlib.sha256(str(str(self.__prev_hash)+str(self.__id)+str(self.__seq_id)+str(dt.datetime.now())+str(root_tx_hash)).encode('utf-8')).hexdigest()
+            block_hash = # Create block hash
             # Add code here
             print('Block committed')
     def display_block_headers(self): # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.  You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count) of transactions in the block
     def get_number_of_blocks(self): # 5 pts - return int total number of blocks in this chain (committed and uncommitted blocks combined)
-        return len(self.__chain) + 1
+        
     def get_values(self): # 10 pts - Returns all of the values of all transactions from every block as a list
             
 class Block:
