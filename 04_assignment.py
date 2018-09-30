@@ -44,7 +44,7 @@ Extra Credit (+10 points): Have get_values() return the timestamp for each value
 import datetime as dt, pandas as pd, uuid, hashlib, unittest, numpy as np, matplotlib.pyplot as plt
 
 class PandasChain:
-    def __init__(self, name):
+    def __init__(self, name): # 5 pts
         self.__name = # Convert name to upper case and store it here
         self.__chain = # Create a blank list
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
@@ -52,25 +52,25 @@ class PandasChain:
         self.__prev_hash = # Set to None
         self.__current_block = # Create a new Block 
         print(self.__name,'PandasChain created with ID',self.__id,'chain started.')
-    def display_chain(self): # This method should loop through all committed and uncommitted blocks and display all transactions in them
+    def display_chain(self): # 5 pts - This method should loop through all committed and uncommitted blocks and display all transactions in them
 
 
     def add_transaction(self,s,r,v): # This method accepts a new transaction and adds it to current block if block is not full. If block is full, it will delegate the committing and creation of a new current block 
         if self.__current_block.get_size() >= 10:
             self.__commit_block(self.__current_block)
         self.__current_block.add_transaction(s,r,v)
-    def __commit_block(self,block): # This method is called by add_transaction if a block is full (i.e 10 or more transactions). It is private and therefore not public accessible. It will change the block status to committed, obtain the merkle root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block to the chain list, increment the seq_id and create a new block as the current block
+    def __commit_block(self,block): # 10 pts - This method is called by add_transaction if a block is full (i.e 10 or more transactions). It is private and therefore not public accessible. It will change the block status to committed, obtain the merkle root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block to the chain list, increment the seq_id and create a new block as the current block
             # Add code here
             block_hash = hashlib.sha256(str(str(self.__prev_hash)+str(self.__id)+str(self.__seq_id)+str(dt.datetime.now())+str(root_tx_hash)).encode('utf-8')).hexdigest()
             # Add code here
             print('Block committed')
-    def display_block_headers(self): # Display just the metadata of all blocks (committed or uncommitted), one block per line.  You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count) of transactions in the block
-    def get_number_of_blocks(self): # return int total number of blocks in this chain (committed and uncommitted blocks combined)
+    def display_block_headers(self): # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.  You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count) of transactions in the block
+    def get_number_of_blocks(self): # 5 pts - return int total number of blocks in this chain (committed and uncommitted blocks combined)
         return len(self.__chain) + 1
-    def get_values(self): # Returns all of the values of all transactions from every block as a list
+    def get_values(self): # 10 pts - Returns all of the values of all transactions from every block as a list
             
 class Block:
-    def __init__(self,seq_id,prev_hash):
+    def __init__(self,seq_id,prev_hash): # 5 pts
         self.__seq_id = # Set to what's passed in from constructor
         self.__prev_hash = # From constructor
         self.__col_names = ['Timestamp','Sender','Receiver','Value','TxHash']
@@ -78,21 +78,21 @@ class Block:
         self.__status = "UNCOMMITTED"
         self.__block_hash = None
         self.__merkle_tx_hash = None
-    def display_header(self): # Display on a single line the metadata of this block. You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and number of transactions in the block
-    def add_transaction(self,s,r,v): # This is the interface for how transactions are added
+    def display_header(self): #5 pts -  Display on a single line the metadata of this block. You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and number of transactions in the block
+    def add_transaction(self,s,r,v): # 10 pts - This is the interface for how transactions are added
         ts = # Get current timestamp 
         tx_hash = # Hash of timestamp, sender, receiver, value
         new_transaction = # Create DataFrame with transaction data (a DataFrame with only 1 row)
         # Append to the transactions data
-    def display_transactions(self): # Print all transactions contained by this block
+    def display_transactions(self): # 10 pts -Print all transactions contained by this block
         
-    def get_size(self): # Return the number of transactions contained by this block
+    def get_size(self): # 5 pts- Return the number of transactions contained by this block
         
     def set_status(self,status):
-        # Setter for status - Allow for the change of status (only two statuses exist - COMMITTED or UNCOMMITTED). No need to validate.
+        # 5 pts - Setter for status - Allow for the change of status (only two statuses exist - COMMITTED or UNCOMMITTED). No need to validate.
     def set_block_hash(self,hash):
-        # Setter for block hash
-    def get_simple_merkle_root(self): # Return and calculate merkle hash by taking all transaction hashes, concatenate them into one string and hash that string producing a "merkle root" - Note, this is not how merkle tries work but is instructive and indicative in terms of the intent and purpose of merkle tries
+        # 5 pts - Setter for block hash
+    def get_simple_merkle_root(self): # 10 pts - Return and calculate merkle hash by taking all transaction hashes, concatenate them into one string and hash that string producing a "merkle root" - Note, this is not how merkle tries work but is instructive and indicative in terms of the intent and purpose of merkle tries
         
         return self.__merkle_tx_hash
 
