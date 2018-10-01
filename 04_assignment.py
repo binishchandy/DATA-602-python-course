@@ -31,9 +31,9 @@ A block consists of:
     - Status: Either UNCOMMITTED or COMMITTED
     
     - Merkle Root: A root hash of transactions. In real blockchains like Bitcoin & Ethereum, a 
-    Merkle trie (yes, that's spelled trie!) is uses. In our case, we will not use a tree but simply take 
-    the hash of the concatenation of all the transaction hashes in a block once a block is full (reaches 
-    10 transactions)
+    Merkle trie (yes, that's spelled trie!) uses a binary tree. We won't do that here. In our case, we will not use 
+    a tree but simply take the hash of the string concatenation of all the transaction hashes 
+    in a block once a block is full (reaches 10 transactions)
     
     - Block hash: The hash of this block is created by the hash of the string concatenation of the previous block's 
     hash, the chains hash id, current date time, sequence id of the block and the root Merkle hash. 
