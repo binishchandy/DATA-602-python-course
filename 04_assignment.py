@@ -115,7 +115,7 @@ class Block:
         self.__prev_hash = # From constructor
         self.__col_names = ['Timestamp','Sender','Receiver','Value','TxHash']
         self.__transactions = # Create a new blank DataFrame with set headers
-        self.__status = # Initial status
+        self.__status = # Initial status. This will be a string.
         self.__block_hash = None
         self.__merkle_tx_hash = None
         
