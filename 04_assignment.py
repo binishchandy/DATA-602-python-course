@@ -97,7 +97,7 @@ import uuid
 class PandasChain:
     def __init__(self, name): # 5 pts
         self.__name = # Convert name to upper case and store it here
-        self.__chain = # Create a blank list
+        self.__chain = # Create an empty list
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
         # Create a sequence ID and set to zero
         self.__prev_hash = # Set to None
@@ -133,7 +133,8 @@ class PandasChain:
     def get_number_of_blocks(self): 
         pass
     # 10 pts - Returns all of the values of all transactions from every block as a list
-    def get_values(self): 
+    def get_values(self):
+        pass
             
 class Block:
     def __init__(self,seq_id,prev_hash): # 5 pts
