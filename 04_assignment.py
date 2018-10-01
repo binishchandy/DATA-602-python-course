@@ -39,10 +39,11 @@ A block consists of:
     hash, the chains hash id, current date time, sequence id of the block and the root Merkle hash. 
     The block hash is generated when a block is full and is committed.
 
-3. Chain - A container class that manages all interaction to the internal state of the chain, i.e. users only 
+3. PandasChain - A container class that manages all interaction to the internal state of the chain, i.e. users only 
 interact with an instance of PandasChain and no other class. A PandasChain class consists of:
 
-    - Name: An arbitrary name of this instance of the chain provided in the constructor when PandasChain is created
+    - Name: An arbitrary name of this instance of the chain provided in the constructor when PandasChain is created (see
+    test cases for usage examples)
     
     - Chain: A Python list of blocks
     
