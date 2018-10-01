@@ -66,7 +66,13 @@ Extra Credit (+10 points): Have get_values() return the timestamp for each value
 '''
 
 
-import datetime as dt, pandas as pd, uuid, hashlib, unittest, numpy as np, matplotlib.pyplot as plt
+import datetime as dt
+import hashlib
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import unittest
+import uuid
 
 class PandasChain:
     def __init__(self, name): # 5 pts
