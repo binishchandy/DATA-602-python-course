@@ -8,15 +8,15 @@ consists of:
 
     - Sender: The name of the party that is sending i.e. "Bob"
     - Receiver: The name of the party that is receiving i.e. "Alice"
-    - Value: The float amount of Pandas transferred
-    - Timestamp: The datetime the transaction occurs
-    - Tx Hash: A SHA-256 hash of the concatenation of the timestamp, sender, receiver and value
+    - Value: The float amount of Pandas Coins transferred
+    - Timestamp: The datetime the transaction occured
+    - Transaction Hash: A SHA-256 hash of the string concatenation of timestamp, sender, receiver and value
 
 2. Block - A block holds a pool of transactions in a DataFrame. The maximum a single block can hold is 10 transactions. 
 When a block is created, it contains zero transactions and has a status of UNCOMITTED. Once a block contains 10 transactions, 
 that block then is marked COMMITTED and a new block is created for future transactions. Blocks are chained together by 
-their block hash ID. Each block, except the first genesis block, tracks the hash of the previous block. When a block 
-generates its own hash identifier, it uses the previous blocks hash as one of several strings it will concantenate. 
+their block hash ID and previous block hash. Each block, except the first genesis block, tracks the hash of the previous block. 
+When a block generates its own hash identifier, it uses the previous blocks hash as one of several strings it will concantenate. 
 
 A block consists of:
 
@@ -27,7 +27,7 @@ A block consists of:
     Merkle trie (yes, that's spelled trie!) is uses. In our case, we will not use a tree but simply take 
     the hash of the concatenation of all the transaction hashes in a block once a block is full (reaches 
     10 transactions)
-    - Block hash: The hash of this block created by the hash of the concatenation of the previous block's 
+    - Block hash: The hash of this block is created by the hash of the string concatenation of the previous block's 
     hash, the chains hash id, current date time, sequence id of the block and the root Merkle hash. 
     The block hash is generated when a block is full and is committed.
 
@@ -35,7 +35,8 @@ A block consists of:
 interact with an instance of PandasChain and no other class. A PandasChain class consists of:
     - Name: An arbitrary name of this instance of the chain provided in the constructor when PandasChain is created
     - Chain: A Python list of blocks
-    - Chain ID: A hash concatenation of a UUID, name of the chain, timestamp of creation of the chain
+    - Chain ID: A hash concatenation of a UUID, name of the chain, timestamp of creation of the chain that uniquely
+    identifies this chain instance.
     - Sequence ID: Tracks the current sequence ID and manages it for new blocks to grab and use
     - Previous Hash: Tracks what the previous hash of the just committed block is so that a new block can be instantiated 
     with the previous hash passed into its constructor
@@ -55,7 +56,9 @@ To create a pandas DataFrame or to append to it, check out the relevant sections
 To Do
 -------------
 One way to tackle this assigment is to start with these classes blank and slowly build it out in a separate file so that as
-you build it out it continues to run without errors, allowing you to incrementally build and test.
+you build it out it continues to run without errors, allowing you to incrementally build and test. There is a parent/child
+one-to-many relationship between PandasChain, Blocks and the transactions a block holds. PandasChain is parent to
+one or more blocks and manages the lifecycle of those blocks. Blocks manage transactions.
 
 Exercise #1. Complete the code below to produce a working PandasChain. Hints are provided wherever feasible.
 
