@@ -136,7 +136,7 @@ class PandasChain:
     def get_number_of_blocks(self): 
         pass
     
-    # 10 pts - Returns all of the values of all transactions from every block as a list
+    # 10 pts - Returns all of the values (Pandas coins transferred) of all transactions from every block as a single list
     def get_values(self):
         pass
             
