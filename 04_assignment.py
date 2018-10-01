@@ -1,22 +1,34 @@
 '''
 Below is a simple implementation of a blockchain called PandasChain. This blockchain stores transactions in pandas DataFrames (in-memory) and does not write to disk. The following are the components of this chain:
 
-1. Transaction - A transaction is an exchange of Pandas coins between two parties. In the case of our blockchain, a transaction consists of:
+1. Transaction - A transaction is an exchange of Pandas coins between two parties. In the case of our blockchain, a transaction 
+consists of:
     - Sender: The name of the party that is sending i.e. "Bob"
     - Receiver: The name of the party that is receiving i.e. "Alice"
     - Value: The float amount of Pandas transferred
     - Timestamp: The datetime the transaction occurs
     - Tx Hash: A SHA-256 hash of the concatenation of the timestamp, sender, receiver and value
 
-2. Block - A block holds a pool of transactions in a DataFrame. The maximum a single block can hold is 10 transactions. When a block is created, it contains zero transactions and has a status of UNCOMITTED. Once a block contains 10 transactions, that block then is marked COMMITTED and a new block is created for future transactions. Blocks are chained together by their block hash ID. Each block, except the first genesis block, tracks the hash of the previous block. When a block generates its own hash identifier, it uses the previous blocks hash as one of several strings it will concantenate. A block consists of:
+2. Block - A block holds a pool of transactions in a DataFrame. The maximum a single block can hold is 10 transactions. 
+When a block is created, it contains zero transactions and has a status of UNCOMITTED. Once a block contains 10 transactions, 
+that block then is marked COMMITTED and a new block is created for future transactions. Blocks are chained together by 
+their block hash ID. Each block, except the first genesis block, tracks the hash of the previous block. When a block 
+generates its own hash identifier, it uses the previous blocks hash as one of several strings it will concantenate. 
+A block consists of:
 
     - Sequence ID: A unique sequential number starting at 0 that increments by 1 that identifies each block
     - Transactions list: A pandas DataFrame containing all of the transactions contained by the block
     - Status: Either UNCOMMITTED or COMMITTED
-    - Merkle Root: A root hash of transactions. In real blockchains like Bitcoin & Ethereum, a Merkle trie (yes, that's spelled trie!) is uses. In our case, we will not use a tree but simply take the hash of the concatenation of all the transaction hashes in a block once a block is full (reaches 10 transactions)
-    - Block hash: The hash of this block created by the hash of the concatenation of the previous block's hash, the chains hash id, current date time, sequence id of the block and the root Merkle hash. The block hash is generated when a block is full and is committed.
+    - Merkle Root: A root hash of transactions. In real blockchains like Bitcoin & Ethereum, a 
+    Merkle trie (yes, that's spelled trie!) is uses. In our case, we will not use a tree but simply take 
+    the hash of the concatenation of all the transaction hashes in a block once a block is full (reaches 
+    10 transactions)
+    - Block hash: The hash of this block created by the hash of the concatenation of the previous block's 
+    hash, the chains hash id, current date time, sequence id of the block and the root Merkle hash. 
+    The block hash is generated when a block is full and is committed.
 
-3. Chain - A container class that manages all interaction to the internal state of the chain, i.e. users only interact with an instance of PandasChain and no other class. A PandasChain class consists of:
+3. Chain - A container class that manages all interaction to the internal state of the chain, i.e. users only 
+interact with an instance of PandasChain and no other class. A PandasChain class consists of:
     - Name: An arbitrary name of this instance of the chain provided in the constructor when PandasChain is created
     - Chain: A Python list of blocks
     - Chain ID: A hash concatenation of a UUID, name of the chain, timestamp of creation of the chain
@@ -24,20 +36,23 @@ Below is a simple implementation of a blockchain called PandasChain. This blockc
     - Previous Hash: Tracks what the previous hash of the just committed block is so that a new block can be instantiated with the previous hash passed into its constructor
     - Current block: Which block is current and available to hold incoming transactions
 
-    The only way to interact with a chain is the add_transaction() method that accepts new transactions and methods that print out chain data like display_block_headers()
+    The only way to interact with a chain is the add_transaction() method that accepts new transactions and 
+    methods that print out chain data like display_block_headers()
 
 
 
 For more information hashlib, see docs here: https://docs.python.org/3/library/hashlib.html
 To understand blocks, chains and how are hashes are used, watch this video: https://www.youtube.com/watch?v=_160oMzblY8&t=303s
 
-One way to tackle this assigment is to start with these classes blank and slowly build it out in a separate file so that as you build it out it continues to run without errors, allowing you to incrementally build and test.
+One way to tackle this assigment is to start with these classes blank and slowly build it out in a separate file so that as
+you build it out it continues to run without errors, allowing you to incrementally build and test.
 
 Exercise #1. Complete the code below to produce a working PandasChain. Hints are provided wherever feasible.
 
-Exercise #2. Using PandasChain's get_values(), get all of the transaction values across all blocks in the chain and plot them. Use an incrementing sequential number for x and the transaction values for y 
+Exercise #2. Using PandasChain's get_values(), get all of the transaction values across all blocks in the chain 
+and plot them. Use an incrementing sequential number for x and the transaction values for y.
 
-Extra Credit (+10 points): Have get_values() return the timestamp for each value transacted and plot a timeseries as well
+Extra Credit (+10 points): Have get_values() return the timestamp for each value transacted and plot a timeseries as well.
 '''
 
 
