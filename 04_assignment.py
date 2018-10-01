@@ -1,5 +1,6 @@
 '''
-Below is a simple implementation of a blockchain called PandasChain. This blockchain stores transactions in pandas DataFrames (in-memory) and does not write to disk. The following are the components of this chain:
+Below is a simple implementation of a blockchain called PandasChain. This blockchain stores transactions in 
+pandas DataFrames (in-memory) and does not write to disk. The following are the components of this chain:
 
 1. Transaction - A transaction is an exchange of Pandas coins between two parties. In the case of our blockchain, a transaction 
 consists of:
