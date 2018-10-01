@@ -34,7 +34,8 @@ interact with an instance of PandasChain and no other class. A PandasChain class
     - Chain: A Python list of blocks
     - Chain ID: A hash concatenation of a UUID, name of the chain, timestamp of creation of the chain
     - Sequence ID: Tracks the current sequence ID and manages it for new blocks to grab and use
-    - Previous Hash: Tracks what the previous hash of the just committed block is so that a new block can be instantiated with the previous hash passed into its constructor
+    - Previous Hash: Tracks what the previous hash of the just committed block is so that a new block can be instantiated 
+    with the previous hash passed into its constructor
     - Current block: Which block is current and available to hold incoming transactions
 
     The only way to interact with a chain is the add_transaction() method that accepts new transactions and 
