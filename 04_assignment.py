@@ -86,10 +86,10 @@ class PandasChain:
     # root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block 
     # to the chain list, increment the seq_id and create a new block as the current block
     def __commit_block(self,block): 
-            # Add code here
-            block_hash = # Create block hash
-            # Add code here
-            print('Block committed')
+        # Add code here
+        block_hash = # Create block hash
+        # Add code here
+        print('Block committed')
     # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.  
     # You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count) 
     # of transactions in the block
