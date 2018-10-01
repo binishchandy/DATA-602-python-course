@@ -95,7 +95,8 @@ import unittest
 import uuid
 
 class PandasChain:
-    def __init__(self, name): # 5 pts
+    # 5 pts - Complete this constructor
+    def __init__(self, name): 
         self.__name = # Convert name to upper case and store it here
         self.__chain = # Create an empty list
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
