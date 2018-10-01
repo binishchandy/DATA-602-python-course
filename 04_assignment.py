@@ -124,20 +124,24 @@ class PandasChain:
         block_hash = # Create block hash
         # Add code here
         print('Block committed')
+    
     # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.  
     # You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count) 
     # of transactions in the block
     def display_block_headers(self): 
         pass
+    
     # 5 pts - return int total number of blocks in this chain (committed and uncommitted blocks combined)
     def get_number_of_blocks(self): 
         pass
+    
     # 10 pts - Returns all of the values of all transactions from every block as a list
     def get_values(self):
         pass
             
 class Block:
-    def __init__(self,seq_id,prev_hash): # 5 pts
+    # 5 pts for constructor
+    def __init__(self,seq_id,prev_hash): 
         self.__seq_id = # Set to what's passed in from constructor
         self.__prev_hash = # From constructor
         self.__col_names = ['Timestamp','Sender','Receiver','Value','TxHash']
@@ -151,7 +155,8 @@ class Block:
     def display_header(self): 
         pass
     
-    def add_transaction(self,s,r,v): # 10 pts - This is the interface for how transactions are added
+    # 10 pts - This is the interface for how transactions are added
+    def add_transaction(self,s,r,v): 
         ts = # Get current timestamp 
         tx_hash = # Hash of timestamp, sender, receiver, value
         new_transaction = # Create DataFrame with transaction data (a DataFrame with only 1 row)
