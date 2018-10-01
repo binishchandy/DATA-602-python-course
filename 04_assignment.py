@@ -77,6 +77,10 @@ you build it out it continues to run without errors, allowing you to incremental
 one-to-many relationship between PandasChain, Blocks and the transactions a block holds. PandasChain is parent to
 one or more blocks and manages the lifecycle of those blocks. Blocks manage transactions.
 
+To break this into manageable chunks, in an isolated environment create a pandas table with the columns listed below in the
+code and make sure you how to append rows to it. Then wrap it in a Block class and make the Block class work. Then build out the
+PandasChain class.
+
 Exercise #1. Complete the code below to produce a working PandasChain. Hints are provided wherever feasible.
 
 Exercise #2. Using PandasChain's get_values(), get all of the transaction values across all blocks in the chain 
