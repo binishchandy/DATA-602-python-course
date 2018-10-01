@@ -1,9 +1,11 @@
 '''
+
 Below is a simple implementation of a blockchain called PandasChain. This blockchain stores transactions in 
 pandas DataFrames (in-memory) and does not write to disk. The following are the components of this chain:
 
 1. Transaction - A transaction is an exchange of Pandas coins between two parties. In the case of our blockchain, a transaction 
 consists of:
+
     - Sender: The name of the party that is sending i.e. "Bob"
     - Receiver: The name of the party that is receiving i.e. "Alice"
     - Value: The float amount of Pandas transferred
@@ -15,6 +17,7 @@ When a block is created, it contains zero transactions and has a status of UNCOM
 that block then is marked COMMITTED and a new block is created for future transactions. Blocks are chained together by 
 their block hash ID. Each block, except the first genesis block, tracks the hash of the previous block. When a block 
 generates its own hash identifier, it uses the previous blocks hash as one of several strings it will concantenate. 
+
 A block consists of:
 
     - Sequence ID: A unique sequential number starting at 0 that increments by 1 that identifies each block
@@ -42,10 +45,15 @@ interact with an instance of PandasChain and no other class. A PandasChain class
     methods that print out chain data like display_block_headers()
 
 
-
+Useful Videos
+-------------
 For more information hashlib, see docs here: https://docs.python.org/3/library/hashlib.html
 To understand blocks, chains and how are hashes are used, watch this video: https://www.youtube.com/watch?v=_160oMzblY8&t=303s
+To create a pandas DataFrame or to append to it, check out the relevant sections in this DataCamp video: https://www.datacamp.com/courses/intermediate-python-for-data-science
 
+
+To Do
+-------------
 One way to tackle this assigment is to start with these classes blank and slowly build it out in a separate file so that as
 you build it out it continues to run without errors, allowing you to incrementally build and test.
 
