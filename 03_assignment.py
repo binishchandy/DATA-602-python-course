@@ -104,7 +104,7 @@ def exercise02():
                 db = MangoDB()
                 db.add_collection('temperatures')
                 db.update_collection('temperatures',{1:50,2:100})
-        - remove_collection() allows caller to delete the collection and its associated data
+        - remove_collection() allows caller to delete a specific collection by name and its associated data
         - list_collections() displays a list of all the collections
         - get_collection_size(collection_name) finds the number of key/value pairs in a given collection
         - to_json(collection_name) that converts the collection to a JSON string
