@@ -16,25 +16,115 @@ Assignment #3
 '''
 import csv, json, math, pandas as pd, requests, unittest, uuid
 
+
 # ------ Create your classes here \/ \/ \/ ------
 
 # Box class declaration below here
-    
+class Box:
+    def __init__(self, length, width):
+        if length <= 0 or width <= 0:
+            raise ValueError("Dimensions of box cannot be zero or negative")
+        self.__length = length
+        self.__width = width
+
+    def get_length(self):
+        return self.__length
+
+    def get_width(self):
+        return self.__width
+
+    def render(self):
+        print('* ' * self.__width)
+        for i in range(self.__length - 2):
+            print('*' + ' ' * (2 * self.__width - 3) + '*')
+        print('* ' * self.__width)
+
+    def invert(self):
+        self.__length, self.__width = self.__width, self.__length
+
+    def get_area(self):
+        return self.__length * self.__width
+
+    def get_perimeter(self):
+        return 2 * self.__length + 2 * self.__width
+
+    def double(self):
+        self.__length = 2 * self.__length
+        self.__width = 2 * self.__width
+        return Box(self.__length, self.__width)
+
+    def __eq__(self, other):
+        """Overrides the default implementation"""
+        if isinstance(other, Box):
+            return self.__length == other.__length and self.__width == other.__width
+        return False
+
+    def print_dim(self):
+        print("Length of box is {} and width is {}".format(self.__length, self.__width))
+
+    def get_dim(self):
+        return (self.__length, self.__width)
+
+    def combine(self, box):
+        self.__length += box.get_length()
+        self.__width += box.get_width()
+        return Box(self.__length, self.__width)
+
+    def get_hypot(self):
+        return math.sqrt(math.pow(self.__length, 2) + math.pow(self.__width, 2))
+
 
 # MangoDB class declaration below here
 
-    
+class MangoDB:
+    def __init__(self):
+        self.__build_default_collection()
+
+    def __build_default_collection(self):
+        self.__db = {}
+        default_coll = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}
+        self.__db['default'] = default_coll
+
+    def add_collection(self, collection_name):
+        self.__db[collection_name] = {}
+
+    def update_collection(self, collection_name, updates):
+        self.__db[collection_name].update(updates)
+
+    def remove_collection(self, collection_name):
+        del (self.__db[collection_name])
+
+    def list_collections(self):
+        return list(self.__db.items())
+
+    def get_collection_size(self, collection_name):
+        return len(self.__db[collection_name])
+
+    def to_json(self, collection_name):
+        return json.dumps(self.__db[collection_name])
+
+    def wipe(self):
+        self.__build_default_collection()
+
+    def get_collection_names(self):
+        return list(self.__db.keys())
+
+    def display_all_collections(self):
+        for key, value in self.__db.items():
+            print('collection: ' + str(key))
+            if value:
+                for key1, value1 in value.items():
+                    print(str(key1) + " " + str(value1))
+
 
 # ------ Create your classes here /\ /\ /\ ------
 
 
-
-
-
 def exercise01():
-
     '''
-        Create an immutable class Box that has private attributes length and width that takes values for length and width upon construction (instantiation via the constructor). Make sure to use Python 3 semantics. Make sure the length and width attributes are private and accessible only via getters.
+        Create an immutable class Box that has private attributes length and width that takes values for length and width
+        upon construction (instantiation via the constructor). Make sure to use Python 3 semantics. Make sure the length
+        and width attributes are private and accessible only via getters.
         
         Remember, here immutable means there are no setter methods. States can change with the methods required below i.e. combine(), invert().
         
@@ -62,9 +152,20 @@ def exercise01():
 '''
 
     # ------ Place code below here \/ \/ \/ ------
-
-
-
+    box1 = Box(5, 10)
+    box2 = Box(3, 4)
+    box3 = Box(5, 10)
+    box1.print_dim()
+    box2.print_dim()
+    box3.print_dim()
+    print(box1 == box2)
+    print(box1 == box3)
+    box1.combine(box3)
+    box2.double()
+    box1.combine(box2)
+    for dim in box2.get_dim():
+        print(dim)
+    print(box2.get_hypot())
     return box1, box2, box3
 
     # ------ Place code above here /\ /\ /\ ------
@@ -72,7 +173,10 @@ def exercise01():
 
 def exercise02():
     '''
-    Create a class called MangoDB. The MangoDB class wraps a dictionary of dictionaries. At the the root level, each key/value will be called a collection, similar to the terminology used by MongoDB, an inferior version of MangoDB ;) A collection is a series of 2nd level key/value paries. The root value key is the name of the collection and the value is another dictionary containing arbitrary data for that collection.
+    Create a class called MangoDB. The MangoDB class wraps a dictionary of dictionaries. At the the root level,
+    each key/value will be called a collection, similar to the terminology used by MongoDB, an inferior version of MangoDB ;)
+    A collection is a series of 2nd level key/value paries. The root value key is the name of the collection and the value is
+    another dictionary containing arbitrary data for that collection.
 
     For example:
 
@@ -90,8 +194,11 @@ def exercise02():
             }
         }
     
-    The above is a representation of a dictionary of dictionaries. Default and temperatures are collections or root keys. The default collection has a series of key/value pairs that make up the collection. The MangoDB class should create the default collection, as shown, on instantiation including a randomly generated uuid using the uuid4() method and have the following methods:
-        - display_all_collections() which iterates through every collection and prints to screen each collection names and the collection's content underneath and may look something like:
+    The above is a representation of a dictionary of dictionaries. Default and temperatures are collections or root keys.
+    The default collection has a series of key/value pairs that make up the collection. The MangoDB class should create the
+    default collection, as shown, on instantiation including a randomly generated uuid using the uuid4() method and have the following methods:
+        - display_all_collections() which iterates through every collection and prints to screen each collection names and
+        the collection's content underneath and may look something like:
             collection: default
                 version 1.0
                 db mangodb
@@ -125,66 +232,78 @@ def exercise02():
         - Display the db's UUID again, confirming it has changed
     '''
 
-    test_scores = [99,89,88,75,66,92,75,94,88,87,88,68,52]
+    test_scores = [99, 89, 88, 75, 66, 92, 75, 94, 88, 87, 88, 68, 52]
 
     # ------ Place code below here \/ \/ \/ ------
+    mdb = MangoDB()
+    mdb.add_collection('testscores')
+    d = {v + 1: k for v, k in enumerate(test_scores)}
+    mdb.update_collection('testscores', d)
+    print(mdb.get_collection_size('testscores'))
+    print(mdb.list_collections())
+    print(mdb.to_json('default'))
+    mdb.wipe()
+    print(mdb.to_json('default'))
 
     # ------ Place code above here /\ /\ /\ ------
 
 
 def exercise03():
     '''
-    1. Avocado toast is expensive but enormously yummy. What's going on with avocado prices? Read about avocado prices on Kaggle (https://www.kaggle.com/neuromusic/avocado-prices/home)
-    2. Load the avocado.csv file included in this repo, read it locally and display every line to the screen
+    1. Avocado toast is expensive but enormously yummy. What's going on with avocado prices?
+    Read about avocado prices on Kaggle (https://www.kaggle.com/neuromusic/avocado-prices/home)
+    2. Load the included avocado.csv file and display every line to the screen
     3. Use the imported csv library
     
     '''
 
     # ------ Place code below here \/ \/ \/ ------
-
+    avocado_df = pd.read_csv("~/Downloads/avocado.csv")
+    print(avocado_df)
 
     # ------ Place code above here /\ /\ /\ ------
+
 
 class TestAssignment3(unittest.TestCase):
     def test_exercise01(self):
         print('Testing exercise 1')
         b1, b2, b3 = exercise01()
-        self.assertEqual(b1.get_length(),16)
-        self.assertEqual(b1.get_width(),28)
-        self.assertTrue(b1==Box(16,28))
-        self.assertEqual(b2.get_length(),6)
-        self.assertEqual(b2.get_width(),8)
-        self.assertEqual(b3.get_length(),5)
-        self.assertEqual(b2.get_hypot(),10)
-        self.assertEqual(b1.double().get_length(),32)
-        self.assertEqual(b1.double().get_width(),112)
+        self.assertEqual(b1.get_length(), 16)
+        self.assertEqual(b1.get_width(), 28)
+        self.assertTrue(b1 == Box(16, 28))
+        self.assertEqual(b2.get_length(), 6)
+        self.assertEqual(b2.get_width(), 8)
+        self.assertEqual(b3.get_length(), 5)
+        self.assertEqual(b2.get_hypot(), 10)
+        self.assertEqual(b1.double().get_length(), 32)
+        self.assertEqual(b1.double().get_width(), 112)
         self.assertTrue(6 in b2.get_dim())
         self.assertTrue(8 in b2.get_dim())
-        self.assertTrue(b2.combine(Box(1,1))==Box(7,9))
+        self.assertTrue(b2.combine(Box(1, 1)) == Box(7, 9))
 
     def test_exercise02(self):
         print('Testing exercise 2')
         exercise02()
         db = MangoDB()
-        self.assertEqual(db.get_collection_size('default'),3)
-        self.assertEqual(len(db.get_collection_names()),1)
-        self.assertTrue('default' in db.get_collection_names() )
+        self.assertEqual(db.get_collection_size('default'), 3)
+        self.assertEqual(len(db.get_collection_names()), 1)
+        self.assertTrue('default' in db.get_collection_names())
         db.add_collection('temperatures')
-        self.assertTrue('temperatures' in db.get_collection_names() )
-        self.assertEqual(len(db.get_collection_names()),2)
-        db.update_collection('temperatures',{1:50})
-        db.update_collection('temperatures',{2:100})
-        self.assertEqual(db.get_collection_size('temperatures'),2)
+        self.assertTrue('temperatures' in db.get_collection_names())
+        self.assertEqual(len(db.get_collection_names()), 2)
+        db.update_collection('temperatures', {1: 50})
+        db.update_collection('temperatures', {2: 100})
+        self.assertEqual(db.get_collection_size('temperatures'), 2)
         self.assertTrue(type(db.to_json('temperatures')) is str)
-        self.assertEqual(db.to_json('temperatures'),'{"1": 50, "2": 100}')
+        self.assertEqual(db.to_json('temperatures'), '{"1": 50, "2": 100}')
         db.wipe()
-        self.assertEqual(db.get_collection_size('default'),3)
-        self.assertEqual(len(db.get_collection_names()),1)
-        
+        self.assertEqual(db.get_collection_size('default'), 3)
+        self.assertEqual(len(db.get_collection_names()), 1)
+
     def test_exercise03(self):
         print('Exercise 3 not tested')
         exercise03()
-     
+
 
 if __name__ == '__main__':
     unittest.main()
