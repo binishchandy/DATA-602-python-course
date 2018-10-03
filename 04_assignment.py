@@ -189,6 +189,9 @@ class Block:
     # and indicative in terms of the intent and purpose of merkle tries
     def get_simple_merkle_root(self): 
         pass
+    
+    def get_values(self):
+        pass
 
 class TestAssignment4(unittest.TestCase):
     def test_chain(self):
