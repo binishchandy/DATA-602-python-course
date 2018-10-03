@@ -1,6 +1,6 @@
 ![alt text][logo]
 
-[logo]: http://chainhaus.com/assets/img/chainhauslogo.jpg "Chainhaus"
+[logo]: http://ultima.select-themes.com/wp-content/uploads/2016/10/fs-logo.png "Chainhaus"
 
 # Learn Python
 
