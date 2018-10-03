@@ -164,6 +164,7 @@ class TestAssignment3(unittest.TestCase):
 
     def test_exercise02(self):
         print('Testing exercise 2')
+        exercise02()
         db = MangoDB()
         self.assertEqual(db.get_collection_size('default'),3)
         self.assertEqual(len(db.get_collection_names()),1)
