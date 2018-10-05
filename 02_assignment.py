@@ -234,7 +234,7 @@ class TestAssignment2(unittest.TestCase):
         dogs = exercise09()
         for d in dogs:
             print(d)
-            self.assertTrue('https://random.dog/' in d)
+        self.assertTrue('https://random.dog/' in d)
             
 
     def test_exercise10(self):
