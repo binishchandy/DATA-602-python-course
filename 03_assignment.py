@@ -108,7 +108,7 @@ def exercise02():
         - list_collections() displays a list of all the collections
         - get_collection_size(collection_name) finds the number of key/value pairs in a given collection
         - to_json(collection_name) that converts the collection to a JSON string
-        - wipe that cleans out the db and resets it with just a default collection
+        - wipe() that cleans out the db and resets it with just a default collection
         - get_collection_names() that returns a list of collection names
 
         Make sure to never expose the underlying data structures
