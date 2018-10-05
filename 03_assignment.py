@@ -135,7 +135,7 @@ def exercise02():
 def exercise03():
     '''
     1. Avocado toast is expensive but enormously yummy. What's going on with avocado prices? Read about avocado prices on Kaggle (https://www.kaggle.com/neuromusic/avocado-prices/home)
-    2. Load the included avocado.csv file and display every line to the screen
+    2. Load the avocado.csv file included in this repo, read it locally and display every line to the screen
     3. Use the imported csv library
     
     '''
