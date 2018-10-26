@@ -72,7 +72,6 @@ def index_page():
 
 @app.route('/calc', methods=['POST'])
 def show_post():
-    # show the post with the given id, the id is an integer
     return str(int(request.form['inputValue']) * 5)
 
 
