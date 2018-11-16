@@ -20,7 +20,11 @@ import requests
 
 # ------ Place code below here \/ \/ \/ ------
 # import plotly library and enter credential info here
-
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.tools as tools
+user_name = 'binishkurian'
+api_key = 'TzQ6XHOUO3XY4riDAmsZ'
 
 # ------ Place code above here /\ /\ /\ ------
 
@@ -122,9 +126,6 @@ def exercise08():
 
     return df, row_count, avg_sq_ft, df_zip_95670, df_zip_not_95610
 
-import plotly.plotly as py
-import plotly.graph_objs as go
-import plotly.tools as tools
 def exercise09():
     '''
     Load historical Bitcoin prices that are in JSON format from https://api.coindesk.com/v1/bpi/historical/close.json using
@@ -155,7 +156,7 @@ def exercise09():
     data = [go.Scatter(
         x=df_new.Date,
         y=df_new['Value'])]
-    tools.set_credentials_file(username='binishkurian', api_key='TzQ6XHOUO3XY4riDAmsZ')
+    tools.set_credentials_file(username=user_name, api_key=api_key)
     # py.iplot(data)
     plotly_url = py.plot(data, filename='basic-line', auto_open=True)
     print(plotly_url)
