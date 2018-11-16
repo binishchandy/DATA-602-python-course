@@ -205,8 +205,6 @@ def exercise12(n):
 
     return checkerboard_matrix
 
-import datetime
-import random
 def exercise13(n):
     '''
     Create a pandas Series, s, with n random integers between 0 and n, for n days starting from 1/1/2010 and plot the
@@ -214,6 +212,8 @@ def exercise13(n):
     
     '''
     # ------ Place code below here \/ \/ \/ ------
+    import datetime
+    import random
     start_date = datetime.date(2010, 1, 1)
     end_date = start_date + datetime.timedelta(days=2)
     index_array = []
